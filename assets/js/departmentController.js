@@ -1,18 +1,17 @@
 'use strict';
- 
+
 angular.module('myCrudApp').controller('DepartmentController', ['$scope', 'DepartmentService', function($scope, DepartmentService) {
     let self = this;
     self.department = { id: null, name:'' };
     self.departments = [];
- 
+
     self.submit = submit;
     self.edit = edit;
     self.remove = remove;
     self.reset = reset;
- 
- 
+
     findAllDepartments();
- 
+
     function findAllDepartments(){
         DepartmentService.findAllDepartments()
             .then(
@@ -24,7 +23,7 @@ angular.module('myCrudApp').controller('DepartmentController', ['$scope', 'Depar
             }
         );
     }
- 
+
     function createDepartment(department){
         DepartmentService.createDepartment(department)
             .then(
@@ -34,7 +33,7 @@ angular.module('myCrudApp').controller('DepartmentController', ['$scope', 'Depar
             }
         );
     }
- 
+
     function updateDepartment(department){
         DepartmentService.updateDepartment(department)
             .then(
@@ -44,7 +43,7 @@ angular.module('myCrudApp').controller('DepartmentController', ['$scope', 'Depar
             }
         );
     }
- 
+
     function deleteDepartment(id){
         DepartmentService.deleteDepartment(id)
             .then(
@@ -65,7 +64,7 @@ angular.module('myCrudApp').controller('DepartmentController', ['$scope', 'Depar
         }
         reset();
     }
- 
+
     function edit(id){
         console.log('id to be edited', id);
         for(let i = 0; i < self.departments.length; i++){
@@ -75,7 +74,7 @@ angular.module('myCrudApp').controller('DepartmentController', ['$scope', 'Depar
             }
         }
     }
- 
+
     function remove(id){
         console.log('id to be deleted', id);
         if(self.department.id === id) {//clean form if the department to be deleted is shown there.
@@ -83,11 +82,9 @@ angular.module('myCrudApp').controller('DepartmentController', ['$scope', 'Depar
         }
         deleteDepartment(id);
     }
- 
- 
+
     function reset(){
         self.department={id:null, name:''};
         $scope.myForm.$setPristine(); //reset Form
     }
- 
 }]);

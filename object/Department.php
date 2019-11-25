@@ -8,7 +8,7 @@ class Department {
 
     // database connection and table name
     private $conn;
-    private $table_name = "department";
+    private $table_name = 'department';
     // object properties
     public $id;
     public $name;
@@ -44,7 +44,7 @@ class Department {
         $this->name = htmlspecialchars(strip_tags($this->name));
 
         // bind values
-        $stmt->bindParam(":name", $this->name);
+        $stmt->bindParam(':name', $this->name);
 
         // execute query
         if ($stmt->execute()) {

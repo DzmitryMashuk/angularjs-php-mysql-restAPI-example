@@ -1,18 +1,18 @@
 'use strict';
- 
-angular.module('myCrudApp').factory('DepartmentService', ['$http', '$q', function($http, $q){
- 
+
+angular.module('myCrudApp').factory('DepartmentService', ['$http', '$q', function($http, $q) {
+
     let REST_SERVICE_URI = 'http://localhost/test/';
- 
+
     let factory = {
         findAllDepartments: findAllDepartments,
         createDepartment: createDepartment,
         updateDepartment: updateDepartment,
         deleteDepartment: deleteDepartment
     };
- 
+
     return factory;
- 
+
     function findAllDepartments() {
         let deferred = $q.defer();
         $http.get(REST_SERVICE_URI+'department/read.php')
@@ -27,7 +27,7 @@ angular.module('myCrudApp').factory('DepartmentService', ['$http', '$q', functio
         );
         return deferred.promise;
     }
- 
+
     function createDepartment(department) {
         let deferred = $q.defer();
         $http.post(REST_SERVICE_URI+'department/create.php', department)
@@ -42,8 +42,7 @@ angular.module('myCrudApp').factory('DepartmentService', ['$http', '$q', functio
         );
         return deferred.promise;
     }
- 
- 
+
     function updateDepartment(department) {
         let deferred = $q.defer();
         $http.put(REST_SERVICE_URI+'department/update.php', department)
@@ -58,7 +57,7 @@ angular.module('myCrudApp').factory('DepartmentService', ['$http', '$q', functio
         );
         return deferred.promise;
     }
- 
+
     function deleteDepartment(id) {
         let deferred = $q.defer();
         $http.delete(REST_SERVICE_URI+'department/delete.php?id='+id)
@@ -73,5 +72,4 @@ angular.module('myCrudApp').factory('DepartmentService', ['$http', '$q', functio
         );
         return deferred.promise;
     }
- 
 }]);
